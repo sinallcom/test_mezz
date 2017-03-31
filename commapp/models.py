@@ -7,8 +7,6 @@ class CommunityPage(Page, RichText):
     """
     A doc tree page
     """
-    add_toc = models.BooleanField(_("Add TOC"), default=False,
-                                  help_text=_("Include a list of child links"))
 
     class Meta:
         verbose_name = _("Community Page")

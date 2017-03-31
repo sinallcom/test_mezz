@@ -20,4 +20,20 @@
 {% endblock %}
 
 {% block main %}
+<h3>The User List</h3>
+
+<table class="table-bordered table-striped">
+    <tr>
+        <th>User name</th>
+        <th>User is staff</th>
+        <th>User is active</th>
+    </tr>
+{% for user in users %}
+    <tr>
+        <td> {{ user.username }} </td>
+        <td> <span class="glyphicon {% if user.is_staff %}glyphicon-ok{% else %} glyphicon-remove {% endif %}" aria-hidden="true"></span> </td>
+        <td> <span class="glyphicon {% if user.is_active %}glyphicon-ok{% else %} glyphicon-remove {% endif %}" aria-hidden="true"></span> </td>
+    </tr>
+{% endfor %}
+</table>
 {% endblock %}
