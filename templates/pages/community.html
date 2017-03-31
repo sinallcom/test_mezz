@@ -27,12 +27,18 @@
         <th>User name</th>
         <th>User is staff</th>
         <th>User is active</th>
+        <th>Auth group</th>
     </tr>
 {% for user in users %}
     <tr>
         <td> {{ user.username }} </td>
         <td> <span class="glyphicon {% if user.is_staff %}glyphicon-ok{% else %} glyphicon-remove {% endif %}" aria-hidden="true"></span> </td>
         <td> <span class="glyphicon {% if user.is_active %}glyphicon-ok{% else %} glyphicon-remove {% endif %}" aria-hidden="true"></span> </td>
+        <td>
+            {% for group in user.grouplist %}
+                {{ group }} <br>
+            {% endfor %}
+        </td>
     </tr>
 {% endfor %}
 </table>
