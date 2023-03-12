@@ -12,20 +12,20 @@ With CreateObject("ADODB.Stream")
 
     cnt = 0 
     Do Until .EOS
-        char = .ReadText(1)
-        if char = "<" then
+        one_char = .ReadText(1)
+        if one_char = "<" then
             buffer_fill = true
         End if
 
         if buffer_fill then
-            buffer = buffer + char
+            buffer = buffer + one_char
         end if
 
         if row_fill then
-            row = row + char
+            row = row + one_char
         end if
 
-        if char = ">" then
+        if one_char = ">" then
             ' WScript.Echo(buffer)
             if buffer = "<Row>" then
                 row = buffer
