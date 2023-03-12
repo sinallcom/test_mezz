@@ -9,6 +9,8 @@ With CreateObject("ADODB.Stream")
     buffer = ""
     buffer_fill = false
     row_fill = false
+
+    cnt = 0 
     Do Until .EOS
         char = .ReadText(1)
         if char = "<" then
@@ -30,7 +32,11 @@ With CreateObject("ADODB.Stream")
                 row_fill = true
             end if
             if buffer = "</Row>" then
-                WScript.Echo(row)
+                ' WScript.Echo(row)
+                cnt = cnt + 1
+                if cnt mod 1000 = 0 then  
+                    WScript.Echo(cnt)
+                end if
                 row = ""
                 row_fill = false
             end if
