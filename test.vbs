@@ -43,6 +43,7 @@ Function CleanData(value_str)
     If InStr(value_str, "&#") > 0 Then
         value_str = HTMLDecode(value_str)
     end if
+    value_str = Replace(value_str,"- ","")
     CleanData = trim(value_str)
 End Function 
 
@@ -63,6 +64,10 @@ Function csv_row(row_local)
     Next
     if changed then
         csv_row = join(result,";")
+        ' Stop words - annoying headers, empty rows.
+        ' If InStr(csv_row, "№ п/п") > 0 or InStr(csv_row, """Стр. ") > 0 or InStr(csv_row, """1"";;""2"";;") > 0 Then
+        '    csv_row = ""
+        ' end if
     else 
         csv_row = ""
     end if
